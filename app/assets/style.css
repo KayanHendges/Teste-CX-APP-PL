@@ -55,3 +55,14 @@ html {
 #submit {
   cursor: pointer;
 }
+
+#cep-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding-left: 2rem;
+}

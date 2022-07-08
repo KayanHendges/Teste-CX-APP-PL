@@ -1,4 +1,5 @@
 import CepForm from "./components/CepForm.js";
+import CepResponse from "./components/CepResponse.js";
 import Core from "./Core.js";
 
 const client = ZAFClient.init();
@@ -11,7 +12,7 @@ client.metadata().then((metadata) => {
 client.on('app.registered', (e) => {
 
   var cepForm = document.getElementById("cep-form")
-  
+
   cepForm.addEventListener("submit", Core.getCepData);
 
 });
@@ -21,6 +22,7 @@ const Main = async () => {
   let appBody = `
   <div id="main-content">
     ${CepForm}
+    ${CepResponse}
   </div>
   `;
 
