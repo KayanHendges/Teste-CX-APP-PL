@@ -1,9 +1,13 @@
-const aNewFunction = () => {
-  // A content here
-};
+async function getCepData(event){
+
+  event.preventDefault();
+
+  var cepInput = document.getElementById("cep-input")
+
+}
 
 const Core = {
-  aNewFunction,
+  getCepData
 };
 
 export default Core;

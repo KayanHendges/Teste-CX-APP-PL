@@ -8,6 +8,14 @@ client.metadata().then((metadata) => {
   settings = metadata.settings;
 });
 
+client.on('app.registered', (e) => {
+
+  var cepForm = document.getElementById("cep-form")
+  
+  cepForm.addEventListener("submit", Core.getCepData);
+
+});
+
 const Main = async () => {
   const App = document.getElementById("app");
   let appBody = `
