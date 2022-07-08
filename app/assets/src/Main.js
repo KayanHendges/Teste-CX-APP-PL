@@ -17,8 +17,8 @@ client.on('app.registered', (e) => { // start eventListeners
   const privateCheckbox = document.getElementById("private-checkbox")
   const privateLabel = document.getElementById("private-label")
 
-  form.addEventListener("submit", getCepData );
-  submitTicketButton.addEventListener("click", submitTicket)
+  form.addEventListener("submit", Core.getCepData );
+  submitTicketButton.addEventListener("click", Core.submitTicket)
   privateLabel.addEventListener("click", (event) => {
       privateCheckbox.checked = !privateCheckbox.checked
   })
