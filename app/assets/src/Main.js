@@ -11,9 +11,11 @@ client.metadata().then((metadata) => {
 
 client.on('app.registered', (e) => {
 
-  var cepForm = document.getElementById("cep-form")
+  const cepForm = document.getElementById("cep-form")
+  const submitTicketButton = document.getElementById("submit-ticket")
 
   cepForm.addEventListener("submit", Core.getCepData);
+  submitTicketButton.addEventListener("click", Core.submitTicket)
 
 });
 
