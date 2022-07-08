@@ -1,3 +1,4 @@
+import CepForm from "./components/CepForm.js";
 import Core from "./Core.js";
 
 const client = ZAFClient.init();
@@ -9,7 +10,11 @@ client.metadata().then((metadata) => {
 
 const Main = async () => {
   const App = document.getElementById("app");
-  let appBody = `<div id="main-content"></div>`;
+  let appBody = `
+  <div id="main-content">
+    ${CepForm}
+  </div>
+  `;
 
   // Write App
   App.innerHTML = appBody;
