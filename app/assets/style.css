@@ -62,7 +62,13 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+}
 
-  padding-left: 2rem;
+#comment {
+  display: none;
+}
+
+#submit-button {
+  display: none;
 }

@@ -1,9 +1,7 @@
 const CepResponse = `
 <div id="cep-container">
-    <span id="cep-address"></span>
-    <span id="cep-city"></span>
-    <span id="cep-number"></span>
-    <button id="submit-ticket" type="button">enviar ticket</button>
+    <textarea id="comment" rows="5" cols="30"></textarea>
+    <button id="submit-ticket">enviar ticket</button>
 </div>
 `;
 

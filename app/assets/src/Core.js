@@ -6,9 +6,8 @@ async function getCepData(event){
   const cepInput = document.getElementById("cep-input");
   const cepValue = cepInput.value;
 
-  const cepAddress = document.getElementById("cep-address");
-  const cepCity = document.getElementById("cep-city");
-  const cepNumber = document.getElementById("cep-number");
+  const commentTextArea = document.getElementById("comment")
+  const submitTicketButton = document.getElementById("submit-ticket")
 
   // implement validate cep
 
@@ -17,7 +16,8 @@ async function getCepData(event){
   .catch(err => { return console.log(err) });
 
   if(!cepData){
-  // implement erro handler e controll error span
+      // implement erro handler e controll error span
+      return;
   };
 
   const { 
@@ -26,10 +26,16 @@ async function getCepData(event){
       cep 
   } = cepData;
 
-  cepAddress.innerHTML = `${logradouro}${complemento? `, ${complemento}` : ''},`;
-  cepCity.innerHTML = `${bairro} - ${localidade}/${uf}.`;
-  cepNumber.innerHTML = `Cep: ${cep}`;
+  const cepText = `\n\n` 
+  +`${logradouro}${complemento? `, ${complemento}` : ''},\n`
+  +`${bairro} - ${localidade}/${uf}.\n`
+  +`Cep: ${cep}.`
 
+  commentTextArea.innerHTML = cepText
+  commentTextArea.style.display = 'flex'
+  commentTextArea.focus()
+
+  submitTicketButton.style.display = 'flex'
 }
 
 async function submitTicket(event){
@@ -52,8 +58,8 @@ async function submitTicket(event){
       ticket: {
           comment: {
               html_body: `<p>${cepAddress}</p>
-                  <p>${cepCity}</p>
-                  <p>${cepNumber}</p>`
+              <p>${cepCity}</p>
+              <p>${cepNumber}</p>`
           }
       }
   }
