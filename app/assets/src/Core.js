@@ -1,41 +1,39 @@
 const client = ZAFClient.init();
 
 async function getCepData(event){
-  event.preventDefault();
+    event.preventDefault();
 
-  const cepInput = document.getElementById("cep-input");
-  const cepValue = cepInput.value;
+    const cepInput = document.getElementById("cep-input");
+    const cepValue = cepInput.value;
 
-  const commentTextArea = document.getElementById("comment")
-  const submitTicketButton = document.getElementById("submit-ticket")
+    const commentContainer = document.getElementById("comment-container")
+    const commentTextArea = document.getElementById("comment")
 
-  // implement validate cep
+    // implement validate cep
 
-  const cepData = await fetch(`https://viacep.com.br/ws/${cepValue}/json/`)
-  .then(response => { return response.json() })
-  .catch(err => { return console.log(err) });
+    const cepData = await fetch(`https://viacep.com.br/ws/${cepValue}/json/`)
+    .then(response => { return response.json() })
+    .catch(err => { return console.log(err) });
 
-  if(!cepData){
-      // implement erro handler e controll error span
-      return;
-  };
+    if(!cepData){
+        // implement erro handler e controll error span
+        return;
+    };
 
-  const { 
-      logradouro, complemento,
-      bairro, localidade, uf,
-      cep 
-  } = cepData;
+    const { 
+        logradouro, complemento,
+        bairro, localidade, uf,
+        cep 
+    } = cepData;
 
-  const cepText = `\n\n` 
-  +`${logradouro}${complemento? `, ${complemento}` : ''},\n`
-  +`${bairro} - ${localidade}/${uf}.\n`
-  +`Cep: ${cep}.`
+    const cepText = `</br></br>` 
+    +`${logradouro}${complemento? `, ${complemento}` : ''},</br>`
+    +`${bairro} - ${localidade}/${uf}.</br>`
+    +`Cep: ${cep}.`
 
-  commentTextArea.innerHTML = cepText
-  commentTextArea.style.display = 'flex'
-  commentTextArea.focus()
-
-  submitTicketButton.style.display = 'flex'
+    commentContainer.style.display = 'flex'
+    commentTextArea.innerHTML = cepText
+    commentTextArea.focus()
 }
 
 async function submitTicket(event){

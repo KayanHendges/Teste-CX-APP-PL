@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 html {
   overflow-y: auto;
 }
@@ -19,6 +20,7 @@ html {
   justify-content: flex-start;
   align-items: center;
 
+  padding: 0 1rem;  
 }
 
 #cep-form {
@@ -29,6 +31,10 @@ html {
   justify-content: center;
   align-items: center;
 
+  padding: 1.5rem 0rem;
+  border-bottom: 2px solid #1f73b7;
+  
+  gap: 1.5rem;
 }
 
 #input-container {
@@ -43,32 +49,101 @@ html {
 }
 
 #cep-header {
+  font-size: 1.8rem;
   color: #333D45;
   font-weight: 400;
 }
 
 #cep-input {
+  height: 2.5rem;
 
-  
+  outline: none;
+  border-radius: .4rem;
+  border: 1px solid rgb(216, 220, 222);
+  padding: .5rem .8rem;
+
+  transition: .2s;
 }
 
-#submit {
+#cep-input:focus {
+  border-color: #1f73b7;
+}
+
+#submit, #submit-ticket {
+  height: 2.5rem;
+  
+  align-items: center;
+  padding: 0rem 1.9rem;
+  
+  color: #1f73b7;
+  border-radius: .4rem;
+  border: 1px solid #1f73b7;
+
+  background-color: transparent;
+
+  transition: .3s;
   cursor: pointer;
 }
 
-#cep-container {
-  width: 100%;
+#submit:hover, #submit-ticket:hover {
+  color: #FFF;
+  background-color: #1f73b7;
+}
 
-  display: flex;
+#comment-container {
+  width: 100%;
+  max-width: 30rem;
+
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  padding: 1rem 0;
+  gap: 1rem;
+}
+
+#comment-header {
+  font-size: 1.2rem;
+  color: #333D45;
+  font-weight: 600;
 }
 
 #comment {
-  display: none;
+  width: 100%;
+
+  outline: none;
+  border-radius: .4rem;
+  border: 1px solid rgb(216, 220, 222);
+  padding: .5rem .8rem;
+
+  transition: .2s;
+  resize: none;
 }
 
-#submit-button {
-  display: none;
+#comment:focus {
+  border-color: #1f73b7;
+}
+
+#buttons-container {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  
+}
+
+#private-checkbox {
+  margin-left: .4rem;
+  cursor: pointer;
+}
+
+#private-label {
+  font-weight: 600;
+  padding-left: .5rem;
+  cursor: pointer;
+}
+
+#submit-ticket {
+  margin-left: auto;
 }

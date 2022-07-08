@@ -9,13 +9,19 @@ client.metadata().then((metadata) => {
   settings = metadata.settings;
 });
 
-client.on('app.registered', (e) => {
+client.on('app.registered', (e) => { // start eventListeners
 
-  const cepForm = document.getElementById("cep-form")
+  const form = document.getElementById("cep-form")
   const submitTicketButton = document.getElementById("submit-ticket")
 
-  cepForm.addEventListener("submit", Core.getCepData);
-  submitTicketButton.addEventListener("click", Core.submitTicket)
+  const privateCheckbox = document.getElementById("private-checkbox")
+  const privateLabel = document.getElementById("private-label")
+
+  form.addEventListener("submit", getCepData );
+  submitTicketButton.addEventListener("click", submitTicket)
+  privateLabel.addEventListener("click", (event) => {
+      privateCheckbox.checked = !privateCheckbox.checked
+  })
 
 });
 
