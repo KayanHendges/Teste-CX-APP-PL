@@ -1,4 +1,4 @@
-import CepForm from "./components/CepForm/html";
+import CepForm from "./components/CepForm/html.js";
 import CepResponse from "./components/CepResponse/html.js";
 import Core from "./Core.js";
 
