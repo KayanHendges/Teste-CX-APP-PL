@@ -1,75 +1,69 @@
 #comment-container {
     width: 100%;
     max-width: 30rem;
-  
+
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  
+
     padding: 1rem 0;
     gap: 1rem;
 }
-  
+
 #comment-header {
     font-size: 1.2rem;
     color: #333D45;
     font-weight: 600;
 }
-  
+
 #comment {
     width: 100%;
-  
-    outline: none;
+
     border-radius: .4rem;
     border: 1px solid rgb(216, 220, 222);
-    padding: .5rem .8rem;
-  
+    padding: 1rem .8rem;
+
     transition: .2s;
     resize: none;
 }
-  
-#comment:focus {
+
+#comment:focus-within {
     border-color: #1f73b7;
 }
-  
+
+#comment-textarea {
+    width: 100%;
+    min-height: 4rem;
+    padding: 0rem .5rem 1rem;
+    outline: none;
+}
+
+#address-container {
+    width: 100%;
+    border-top: 1px solid rgb(216, 220, 222);
+    padding: 1rem .5rem 0rem;
+}
+
 #buttons-container {
     width: 100%;
-  
+
     display: flex;
     align-items: center;
     
 }
-  
+
 #private-checkbox {
     margin-left: .4rem;
     cursor: pointer;
 }
-  
+
 #private-label {
     font-weight: 600;
     padding-left: .5rem;
     cursor: pointer;
 }
-  
+
 #submit-ticket {
-    height: 2.5rem;
-    
-    align-items: center;
-    padding: 0rem 1.9rem;
     margin-left: auto;
-    
-    color: #1f73b7;
-    border-radius: .4rem;
-    border: 1px solid #1f73b7;
-  
-    background-color: transparent;
-  
-    transition: .3s;
-    cursor: pointer;
-}
-  
-#submit:hover, #submit-ticket:hover {
-    color: #FFF;
-    background-color: #1f73b7;
 }

@@ -1,4 +1,5 @@
 import ErrorSpan from "./components/CepForm/ErrorSpan";
+import CommentHandler from "./components/CepResponse/CommentHandler";
 
 const client = ZAFClient.init();
 
@@ -20,27 +21,22 @@ async function getCepData(event){
         return;
     };
 
-    const commentContainer = document.getElementById("comment-container")
-    const commentTextArea = document.getElementById("comment")
-
     const { 
         logradouro, complemento,
         bairro, localidade, uf,
         cep 
     } = cepData;
 
-    const cepText = `</br></br>` 
-    +`${logradouro}${complemento? `, ${complemento}` : ''},</br>`
+    const address = `${logradouro}${complemento? `, ${complemento}` : ''},</br>`
     +`${bairro} - ${localidade}/${uf}.</br>`
     +`Cep: ${cep}.`
 
-    commentContainer.style.display = 'flex'
-    commentTextArea.innerHTML = cepText
-    commentTextArea.focus()
-
+    CommentHandler.setCep(address)
+    
     const mainContainer = document.getElementById("main-container");
     const mainContainerHeight = mainContainer.offsetHeight;
 
+    const commentContainer = document.getElementById("comment-container")
     const commentContainerHeight = commentContainer.offsetHeight
 
     const appHeight = mainContainerHeight + commentContainerHeight 
