@@ -5,6 +5,8 @@ const client = ZAFClient.init();
 
 async function getCepData(event){
     event.preventDefault();
+
+    CommentHandler.reset()
     ErrorSpan.reset()
     CommentHandler.setStatus('reset')
 

@@ -1,3 +1,13 @@
+function reset(){
+    const commentTextArea = document.getElementById("comment-textarea")
+    const addressContainer = document.getElementById("address-container")
+    const privateCheckbox = document.getElementById("private-checkbox")
+
+    commentTextArea.innerHTML = ''
+    addressContainer.innerHTML= ''
+    privateCheckbox.checked = false
+}
+
 function setCep(address){
 
     const addressContainer = document.getElementById("address-container")
@@ -64,6 +74,7 @@ function setStatus(status, message){
 }
 
 const CommentHandler = {
+    reset,
     setCep,
     setStatus
 }
