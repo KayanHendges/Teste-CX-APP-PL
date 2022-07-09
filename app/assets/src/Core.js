@@ -9,6 +9,9 @@ async function getCepData(event){
     CommentHandler.reset()
     ErrorSpan.reset()
     CommentHandler.setStatus('reset')
+    
+    const submitButton = document.getElementById("submit")
+    submitButton.disabled = true
 
     const cepInput = document.getElementById("cep-input");
     const cepValue = cepInput.value;
@@ -18,6 +21,8 @@ async function getCepData(event){
     const cepData = await fetch(`https://viacep.com.br/ws/${cepValue}/json/`)
     .then(response => { return response.json() })
     .catch(err => { return console.log(err) });
+
+    submitButton.disabled = false
 
     if(!cepData){
         ErrorSpan.setError('erro ao buscar cep')
@@ -41,7 +46,6 @@ async function getCepData(event){
 
     const appHeight = mainContentHeight
     client.invoke("resize", { width: "100%", height: `${appHeight}px` });
-
 }
 
 async function submitTicket(event){
