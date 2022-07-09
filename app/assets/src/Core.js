@@ -14,9 +14,11 @@ async function getCepData(event){
     submitButton.disabled = true
 
     const cepInput = document.getElementById("cep-input");
-    const cepValue = cepInput.value;
+    const cepValue = cepInput.value.replace((/[^\d]/g, ""));
 
-    // implement validate cep
+    if(cepValue.length != 8){
+        return ErrorSpan.setError('o cep precisa ter 8 números')
+    }
 
     const cepData = await fetch(`https://viacep.com.br/ws/${cepValue}/json/`)
     .then(response => { return response.json() })
