@@ -6,6 +6,7 @@ const client = ZAFClient.init();
 async function getCepData(event){
     event.preventDefault();
     ErrorSpan.reset()
+    CommentHandler.setStatus('reset')
 
     const cepInput = document.getElementById("cep-input");
     const cepValue = cepInput.value;
@@ -46,49 +47,50 @@ async function getCepData(event){
 
 async function submitTicket(event){
 
-  const { ticket } = await client.get('ticket')
-  .catch(err => { return console.log(`Request error: ${error}`) });
+    CommentHandler.setStatus('loading')
 
-  if(!ticket){
-      // implement span error handler
-      return 
-  }
+    const { ticket } = await client.get('ticket')
+    .catch(err => { return console.log(`Request error: ${error}`) });
 
-  const { id: ticketId } = ticket;
+    if(!ticket){
+        CommentHandler.setStatus('error', 'não foi possível encontrar o ticket')
+        return 
+    }
 
-  const cepAddress = document.getElementById("cep-address").innerHTML;
-  const cepCity = document.getElementById("cep-city").innerHTML;
-  const cepNumber = document.getElementById("cep-number").innerHTML;
+    const { id: ticketId } = ticket;
 
-  const ticketRequest = {
-      ticket: {
-          comment: {
-              html_body: `<p>${cepAddress}</p>
-              <p>${cepCity}</p>
-              <p>${cepNumber}</p>`
-          }
-      }
-  }
+    const cepAddress = document.getElementById("cep-address").innerHTML;
+    const cepCity = document.getElementById("cep-city").innerHTML;
+    const cepNumber = document.getElementById("cep-number").innerHTML;
 
-  const hasUpdatedTicket = client.request({
-      method: 'put',
-      url: `/api/v2/tickets/${ticketId}`,
-      contentType: 'application/json',
-      data: JSON.stringify(ticketRequest)
-  })
-  .then(response => {
-      console.log(response)
-      return true
-  })
-  .catch(err => { return console.log(err) })
+    const ticketRequest = {
+        ticket: {
+            comment: {
+                html_body: `<p>${cepAddress}</p>
+                <p>${cepCity}</p>
+                <p>${cepNumber}</p>`
+            }
+        }
+    }
 
-  if(!hasUpdatedTicket){
-      // implement span error handler
-      return
-  }
+    const hasUpdatedTicket = client.request({
+        method: 'put',
+        url: `/api/v2/tickets/${ticketId}`,
+        contentType: 'application/json',
+        data: JSON.stringify(ticketRequest)
+    })
+    .then(response => {
+        console.log(response)
+        return true
+    })
+    .catch(err => { return console.log(err) })
 
-  console.log("ticket updated")
+    if(!hasUpdatedTicket){
+        CommentHandler.setStatus('error', 'não foi possível encontrar o ticket')
+        return
+    }
 
+    CommentHandler.setStatus('success')
 }
 
 const Core = {

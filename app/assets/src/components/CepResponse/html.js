@@ -11,6 +11,10 @@ const CepResponse = `
         <span id="private-label">Privado</span>
         <button id="submit-ticket">enviar ticket</button>
     </div>
+    <div id="status-container">
+        <span id="status-submit">enviando</span>
+        <span id="status-loader"></span>
+    </div>
 </div>
 `;
 
