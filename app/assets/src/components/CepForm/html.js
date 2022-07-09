@@ -1,4 +1,5 @@
 const CepForm = `
+<link rel="stylesheet" href="./src/components/CepForm/style.css" type="text/css" />
 <form id="cep-form">
     <h2 id="cep-header">Informações do Cep</h2>
     <div id="input-container">

@@ -1,5 +1,5 @@
-import CepForm from "./components/CepForm.js";
-import CepResponse from "./components/CepResponse.js";
+import CepForm from "./components/CepForm/html";
+import CepResponse from "./components/CepResponse/html.js";
 import Core from "./Core.js";
 
 const client = ZAFClient.init();
