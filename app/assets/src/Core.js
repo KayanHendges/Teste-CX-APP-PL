@@ -1,5 +1,5 @@
-import ErrorSpan from "./components/CepForm/ErrorSpan";
-import CommentHandler from "./components/CepResponse/CommentHandler";
+import ErrorSpan from "./components/CepForm/ErrorSpan.js";
+import CommentHandler from "./components/CepResponse/CommentHandler.js";
 
 const client = ZAFClient.init();
 
@@ -34,13 +34,10 @@ async function getCepData(event){
 
     CommentHandler.setCep(address)
     
-    const mainContainer = document.getElementById("main-container");
-    const mainContainerHeight = mainContainer.offsetHeight;
+    const mainContent = document.getElementById("main-content");
+    const mainContentHeight = mainContent.offsetHeight;
 
-    const commentContainer = document.getElementById("comment-container")
-    const commentContainerHeight = commentContainer.offsetHeight
-
-    const appHeight = mainContainerHeight + commentContainerHeight 
+    const appHeight = mainContentHeight
     client.invoke("resize", { width: "100%", height: `${appHeight}px` });
 
 }
@@ -59,16 +56,17 @@ async function submitTicket(event){
 
     const { id: ticketId } = ticket;
 
-    const cepAddress = document.getElementById("cep-address").innerHTML;
-    const cepCity = document.getElementById("cep-city").innerHTML;
-    const cepNumber = document.getElementById("cep-number").innerHTML;
+    const comment = document.getElementById("comment-textarea").innerHTML
+    const address = document.getElementById("address-container").innerHTML
+    const privateComment = document.getElementById("private-checkbox").checked
+    const isPublic = privateComment? false : true
 
     const ticketRequest = {
         ticket: {
             comment: {
-                html_body: `<p>${cepAddress}</p>
-                <p>${cepCity}</p>
-                <p>${cepNumber}</p>`
+                html_body: `${comment? `${comment}</br></br>` : ''}
+                ${address}`,
+                public: isPublic
             }
         }
     }
@@ -80,7 +78,6 @@ async function submitTicket(event){
         data: JSON.stringify(ticketRequest)
     })
     .then(response => {
-        console.log(response)
         return true
     })
     .catch(err => { return console.log(err) })
