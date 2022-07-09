@@ -6,9 +6,6 @@ async function getCepData(event){
     const cepInput = document.getElementById("cep-input");
     const cepValue = cepInput.value;
 
-    const commentContainer = document.getElementById("comment-container")
-    const commentTextArea = document.getElementById("comment")
-
     // implement validate cep
 
     const cepData = await fetch(`https://viacep.com.br/ws/${cepValue}/json/`)
@@ -19,6 +16,9 @@ async function getCepData(event){
         // implement erro handler e controll error span
         return;
     };
+
+    const commentContainer = document.getElementById("comment-container")
+    const commentTextArea = document.getElementById("comment")
 
     const { 
         logradouro, complemento,
@@ -31,11 +31,18 @@ async function getCepData(event){
     +`${bairro} - ${localidade}/${uf}.</br>`
     +`Cep: ${cep}.`
 
-    client.invoke("resize", { width: "100%", height: "370px" });
-
     commentContainer.style.display = 'flex'
     commentTextArea.innerHTML = cepText
     commentTextArea.focus()
+
+    const mainContainer = document.getElementById("main-container");
+    const mainContainerHeight = mainContainer.offsetHeight;
+
+    const commentContainerHeight = commentContainer.offsetHeight
+
+    const appHeight = mainContainerHeight + commentContainerHeight 
+    client.invoke("resize", { width: "100%", height: `${appHeight}px` });
+
 }
 
 async function submitTicket(event){
