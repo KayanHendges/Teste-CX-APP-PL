@@ -1,7 +1,10 @@
+import ErrorSpan from "./components/CepForm/ErrorSpan";
+
 const client = ZAFClient.init();
 
 async function getCepData(event){
     event.preventDefault();
+    ErrorSpan.reset()
 
     const cepInput = document.getElementById("cep-input");
     const cepValue = cepInput.value;
@@ -13,7 +16,7 @@ async function getCepData(event){
     .catch(err => { return console.log(err) });
 
     if(!cepData){
-        // implement erro handler e controll error span
+        ErrorSpan.setError('erro ao buscar cep')
         return;
     };
 
