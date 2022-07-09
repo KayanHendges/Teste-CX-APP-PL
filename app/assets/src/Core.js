@@ -31,6 +31,8 @@ async function getCepData(event){
     +`${bairro} - ${localidade}/${uf}.</br>`
     +`Cep: ${cep}.`
 
+    client.invoke("resize", { width: "100%", height: "370px" });
+
     commentContainer.style.display = 'flex'
     commentTextArea.innerHTML = cepText
     commentTextArea.focus()
