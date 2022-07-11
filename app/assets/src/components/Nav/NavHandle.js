@@ -1,4 +1,4 @@
-function switchTab(position){
+function switchTab(event){
 
     const className = event.path[0].className
     const position = className.substring(className.length-1, className.length)
