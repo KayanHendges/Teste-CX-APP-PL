@@ -32,8 +32,8 @@
 }
 
 #tab-option-disabled {
-    border-color: #333D45;
-    background-color: #e2e2e2;
+    border-color: #d8dcde;
+    background-color: #f8f8f8;
     padding-bottom: calc(.2rem - 2px);
     
     cursor: pointer;
