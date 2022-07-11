@@ -3,20 +3,45 @@ import CommentHandler from "./components/CepResponse/CommentHandler.js";
 
 const client = ZAFClient.init();
 
+async function onChangeCep(event){
+
+    event.preventDefault()
+
+    const cepInput = document.getElementById("cep-input")
+    const cepString = cepInput.value
+
+    const cep = cepString.replace(/[^0-9]/g, '')
+
+    cepInput.value = cep
+
+    if(cep.length > 8){
+        return cepInput.value = cep.substring(0, 5) + '-' + cep.substring(5, 8)
+    }
+
+    if(cep.length > 5){
+        return cepInput.value = cep.substring(0, 5) + '-' + cep.substring(5, 8)
+    }
+
+    return
+
+}
+
 async function getCepData(event){
     event.preventDefault();
 
     CommentHandler.reset()
     ErrorSpan.reset()
     CommentHandler.setStatus('reset')
-    
+
     const submitButton = document.getElementById("submit")
     submitButton.disabled = true
 
     const cepInput = document.getElementById("cep-input");
-    const cepValue = cepInput.value.replace((/[^\d]/g, ""));
+    const inputValue = cepInput.value;
+    const cepValue = inputValue.replace(/[^0-9]/g, '')
 
     if(cepValue.length != 8){
+        submitButton.disabled = false
         return ErrorSpan.setError('o cep precisa ter 8 números')
     }
 
@@ -99,8 +124,9 @@ async function submitTicket(event){
 }
 
 const Core = {
-  getCepData,
-  submitTicket,
+    onChangeCep,
+    getCepData,
+    submitTicket,
 };
 
 export default Core;

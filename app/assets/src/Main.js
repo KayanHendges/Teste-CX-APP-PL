@@ -12,13 +12,18 @@ client.metadata().then((metadata) => {
 client.on('app.registered', (e) => { // start eventListeners
 
   const form = document.getElementById("cep-form")
+  const cepInput = document.getElementById("cep-input")
   const submitTicketButton = document.getElementById("submit-ticket")
 
   const privateCheckbox = document.getElementById("private-checkbox")
   const privateLabel = document.getElementById("private-label")
 
   form.addEventListener("submit", Core.getCepData );
+  
+  cepInput.addEventListener("input", Core.onChangeCep)
+
   submitTicketButton.addEventListener("click", Core.submitTicket)
+  
   privateLabel.addEventListener("click", (event) => {
       privateCheckbox.checked = !privateCheckbox.checked
   })
