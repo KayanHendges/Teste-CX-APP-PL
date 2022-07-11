@@ -1,5 +1,4 @@
 const CepResponse = `
-<link rel="stylesheet" href="./src/components/CepResponse/style.css" type="text/css" />
 <div id="comment-container">
     <h3 id="comment-header">Digite o comentário</h3>
     <div id="comment">

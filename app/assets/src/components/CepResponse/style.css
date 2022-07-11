@@ -65,7 +65,25 @@
 }
 
 #submit-ticket {
+    height: 2.5rem;
+    
+    align-items: center;
+    padding: 0rem 1.9rem;
     margin-left: auto;
+    
+    color: #1f73b7;
+    border-radius: .4rem;
+    border: 1px solid #1f73b7;
+  
+    background-color: transparent;
+  
+    transition: .3s;
+    cursor: pointer;
+}
+
+#submit-ticket:hover {
+    color: #FFF;
+    background-color: #1f73b7;
 }
 
 #status-container {
