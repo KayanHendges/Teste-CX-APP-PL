@@ -2,7 +2,7 @@
 let client = ZAFClient.init();
 
 client.on("app.registered", (e) => {
-  client.invoke("resize", { width: "100%", height: "140px" });
+  client.invoke("resize", { width: "100%", height: "500px" });
 });
 
 // Create screen context

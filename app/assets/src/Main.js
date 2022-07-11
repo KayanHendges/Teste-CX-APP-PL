@@ -35,13 +35,15 @@ client.on('app.registered', (e) => { // start eventListeners
   submitTicketButton.addEventListener("click", Core.submitTicket)
   
   privateLabel.addEventListener("click", (event) => {
-      privateCheckbox.checked = !privateCheckbox.checked
+    privateCheckbox.checked = !privateCheckbox.checked
   })
 
 });
 
 const Main = async () => {
   const App = document.getElementById("app");
+  App.innerHTML = ''
+  
   let appBody = `
   <div id="main-content">
     ${Nav}

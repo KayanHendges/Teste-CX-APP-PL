@@ -45,10 +45,14 @@ async function getCepData(event){
         return ErrorSpan.setError('o cep precisa ter 8 números')
     }
 
+    const loader = document.getElementById("comment-loader")
+    loader.style.display = 'block'
+
     const cepData = await fetch(`https://viacep.com.br/ws/${cepValue}/json/`)
     .then(response => { return response.json() })
     .catch(err => { return console.log(err) });
 
+    loader.style.display = 'none'
     submitButton.disabled = false
 
     if(!cepData){
@@ -67,12 +71,6 @@ async function getCepData(event){
     +`Cep: ${cep}.`
 
     CommentHandler.setCep(address)
-    
-    const mainContent = document.getElementById("main-content");
-    const mainContentHeight = mainContent.offsetHeight;
-
-    const appHeight = mainContentHeight
-    client.invoke("resize", { width: "100%", height: `${appHeight}px` });
 }
 
 async function submitTicket(event){

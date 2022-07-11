@@ -11,6 +11,10 @@
     gap: 1rem;
 }
 
+#comment-loader {
+    display: none;
+}
+
 #comment-header {
     font-size: 1.2rem;
     color: #333D45;

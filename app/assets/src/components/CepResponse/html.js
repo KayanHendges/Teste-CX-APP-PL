@@ -1,5 +1,6 @@
 const CepResponse = `
 <div id="comment-container">
+    <img id="comment-loader" src="../assets/images/loading.gif" alt="loading">
     <h3 id="comment-header">Digite o comentário</h3>
     <div id="comment">
         <div id="comment-textarea" contenteditable></div>

@@ -26,7 +26,6 @@ function switchTab(event){
         }
         return section.style.display = 'none'
     })
-
 }
 
 const NavHandler = {
