@@ -29,8 +29,8 @@ function switchTab(event){
 
 }
 
-const NavHandle = {
+const NavHandler = {
     switchTab
 }
 
-export default NavHandle
+export default NavHandler

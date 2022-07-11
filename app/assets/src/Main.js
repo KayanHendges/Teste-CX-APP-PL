@@ -1,7 +1,7 @@
 import CepForm from "./components/CepForm/html.js";
 import CepResponse from "./components/CepResponse/html.js";
 import Nav from "./components/Nav/html.js";
-import NavHandle from "./components/Nav/navHandle.js";
+import NavHandle from "./components/Nav/NavHandler.js";
 import Core from "./Core.js";
 
 const client = ZAFClient.init();
@@ -24,7 +24,9 @@ client.on('app.registered', (e) => { // start eventListeners
   const privateLabel = document.getElementById("private-label")
 
   tabOption1.addEventListener("click", NavHandle.switchTab)
+  
   tabOption2.addEventListener("click", NavHandle.switchTab)
+  tabOption2.addEventListener("click", Core.getLastTickets)
 
   form.addEventListener("submit", Core.getCepData );
   
@@ -43,12 +45,11 @@ const Main = async () => {
   let appBody = `
   <div id="main-content">
     ${Nav}
-    <section id="tab">
+    <section id="get-cep">
       ${CepForm}
       ${CepResponse}
     </section>
-    <section id="tab">
-
+    <section id="last-tickets">
     </section>
   </div>
   `;

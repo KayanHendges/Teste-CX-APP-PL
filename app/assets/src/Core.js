@@ -123,10 +123,57 @@ async function submitTicket(event){
     CommentHandler.setStatus('success')
 }
 
+async function getLastTickets(){
+
+    const ticketsSection = document.getElementById("last-tickets")
+
+    const { ticket } = await client.get('ticket')
+    .catch(err => { return console.log(`Request error: ${error}`) });
+
+    if(!ticket){
+        // implement handle error
+        return 
+    }
+
+    const { requester: requester } = ticket;
+
+    if(!requester){
+        // implement handle error
+        return
+    }
+
+    const urlRequest = (`/api/v2/users/${requester.id}/tickets/requested?sort_by=created_at&sort_order=desc`)
+    const { tickets } = await client.request(urlRequest)
+    .catch(err => { console.log(err) })
+
+    const currentUrl = document.referrer
+
+    const list = tickets.map(ticket => {
+        const { id, status, subject, created_at } = ticket
+        const createdAt = created_at.substring(0, 10).replace('-', '/')
+        return `
+        <ul id="tickets-list">
+            <a href="${currentUrl}agent/tickets/${id}"
+                <li id="ticket-container" target="_blank">
+                    <div id="ticket-header">
+                        <span id="ticket-status">${status}</span>
+                        <span id="ticket-created">${createdAt}</span>
+                    </div>
+                    <span id="ticket-subject">${subject}</span>
+                </li>
+            </a>
+        </ul>
+        `
+    })
+
+    ticketsSection.innerHTML = list.join("")    
+}
+
 const Core = {
     onChangeCep,
     getCepData,
     submitTicket,
+    getLastTickets,
 };
 
 export default Core;
