@@ -40,11 +40,11 @@ function setStatus(status, message){
     }
 
     buttonsContainer.style.display = 'none'
+    statusContainer.style.display = 'flex'
 
     if(status == 'loading'){
         const loadingMessage = message? message : 'enviando'
 
-        statusContainer.style.display = 'flex'
         statusSubmit.style.color = '#1f73b7'
         statusSubmit.innerHTML = loadingMessage
         statusLoader.style.display = 'flex'
@@ -56,7 +56,6 @@ function setStatus(status, message){
     if(status == 'success'){
         const successMessage = message? message : 'enviado com sucesso.'
 
-        statusContainer.style.display = 'flex'
         statusSubmit.style.color = '#1c9610'
         statusSubmit.innerHTML = successMessage
         return
@@ -65,7 +64,6 @@ function setStatus(status, message){
     if(status == 'error'){
         const errorMessage = message? message : 'erro ao enviar.'
 
-        statusContainer.style.display = 'flex'
         statusSubmit.style.color = '#e20316'
         statusSubmit.innerHTML = errorMessage
         return
