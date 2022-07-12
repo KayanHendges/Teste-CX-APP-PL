@@ -66,6 +66,11 @@ async function getCepData(event){
         cep 
     } = cepData;
 
+    if(!cep){
+        ErrorSpan.setError('cep inválido')
+        return
+    }
+
     const address = `${logradouro}${complemento? `, ${complemento}` : ''},</br>`
     +`${bairro} - ${localidade}/${uf}.</br>`
     +`Cep: ${cep}.`
