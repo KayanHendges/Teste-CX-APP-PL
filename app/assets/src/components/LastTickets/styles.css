@@ -32,6 +32,8 @@
     
     background-color: #1f73b7;
     border-bottom: 1px solid #1f73b7;
+
+    overflow: hidden;
 }
 
 #ticket-status, #ticket-created {
