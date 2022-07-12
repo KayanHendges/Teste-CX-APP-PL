@@ -39,6 +39,7 @@
 }
   
 #cep-input {
+    width: 9.5rem;
     height: 2.5rem;
 
     outline: none;
